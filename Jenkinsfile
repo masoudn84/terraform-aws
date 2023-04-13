@@ -37,7 +37,7 @@ pipeline {
             }
         }
         stage('run ansible playbook') {
-            script {sh 'ansible-playbook -i hosts.yaml'}
+            steps{script {sh 'ansible-playbook -i hosts.yaml'}}
         }
     }
 }

@@ -3,11 +3,14 @@ pipeline {
     stages {
         stage('clone repo') {
             steps {
-                git_url: "https://github.com/masoudn84/terraform-aws.git"
+                git(
+                    url:"https://github.com/masoudn84/terraform-aws.git"
+                )
             }
         }
         stage('apply terraform') {
             steps {
+                script{
                 sh 'terraform init'
                 sh 'terraform fmt'
                 sh 'terraform validate' 
@@ -23,16 +26,18 @@ pipeline {
     else 
     exit 11
     fi
-    '''
+    '''}
             }
         }
         stage('clone ansible repo'){
             steps {
-                git_url: 'https://github.com/masoudn84/iac_jenkins.git'
+                git(
+                    url: 'https://github.com/masoudn84/iac_jenkins.git'
+                )
             }
         }
         stage('run ansible playbook') {
-            sh 'ansible-playbook -i hosts.yaml'
+            script {sh 'ansible-playbook -i hosts.yaml'}
         }
     }
 }

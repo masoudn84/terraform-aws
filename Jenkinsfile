@@ -15,11 +15,11 @@ pipeline {
         stage('apply terraform') {
             steps {
                 withCredentials(
-                    [string(credentialsId: 'aws_access_key', variable: 'AWS_ACCESS_KEY_ID'),
-                     string(credentialsId: 'aws_secret_key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    [string(credentialsId: 'aws_access_key', variable: 'aws_access_key'),
+                     string(credentialsId: 'aws_secret_key', variable: 'aws_secret_key')]) {
                 sh "ls"
                 sh 'terraform init'
-                sh 'terraform apply -auto-approve -var aws_access_key=AWS_ACCESS_KEY_ID -var aws_secret_key=AWS_SECRET_ACCESS_KEY'
+                sh 'terraform apply -auto-approve -var aws_access_key=aws_access_key -var aws_secret_key=aws_secret_key'
                 sh '''if [ -e "vm_ip.txt" ];then
     echo "hi"
     count=0

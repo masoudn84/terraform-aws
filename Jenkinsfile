@@ -14,6 +14,7 @@ pipeline {
         stage('apply terraform') {
             steps {
                 script{
+                sh "ls"
                 sh 'terraform init'
                 sh 'terraform fmt'
                 sh 'terraform validate' 

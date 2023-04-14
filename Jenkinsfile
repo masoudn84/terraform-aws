@@ -4,7 +4,7 @@ pipeline {
         stage('clone repo') {
             steps {
                 git(
-                    url:"https://github.com/masoudn84/terraform-aws.git"
+                    url:"https://github.com/masoudn84/terraform-aws.git",
                     branch: "main"
                 )
                 script{ sh "ls"

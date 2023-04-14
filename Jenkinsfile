@@ -14,9 +14,10 @@ pipeline {
         }
         stage('apply terraform') {
             steps {
-                withCredentials(
-                    [string(credentialsId: 'aws_access_key', variable: 'aws_access_key'),
-                     string(credentialsId: 'aws_secret_key', variable: 'aws_secret_key')]) {
+                // withCredentials(
+                //     [string(credentialsId: 'aws_access_key', variable: 'aws_access_key'),
+                //      string(credentialsId: 'aws_secret_key', variable: 'aws_secret_key')]) {
+                script{
                 sh "ls"
                 sh 'terraform init'
                 sh 'terraform apply -auto-approve -var aws_access_key=AKIA3DA5PWO352FSO2F6 -var aws_secret_key=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'

@@ -1,0 +1,21 @@
+all:
+  hosts:
+    node1:
+      ansible_port: 22
+      ansible_host: "172.20.20.21"
+  children:
+    webservers:
+      hosts:
+        "172.20.20.22":
+        bar.example.com:
+    dbservers:
+      hosts:
+        one.example.com:
+    prod:
+      hosts:
+        foo.example.com:
+        one.example.com:
+        two.example.com:
+    test:
+      hosts:
+        bar.example.com:

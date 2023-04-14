@@ -20,7 +20,7 @@ pipeline {
                 script{
                 sh "ls"
                 sh 'terraform init'
-                sh 'terraform apply -auto-approve -var aws_access_key=AKIA3DA5PWO352FSO2F6 -var aws_secret_key=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'
+                sh 'terraform apply -auto-approve -var aws_access_key=aws_access_key -var aws_secret_key=aws_secret_key'
                 sh '''if [ -e "vm_ip.txt" ];then
     echo "hi"
     count=0

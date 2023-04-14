@@ -6,6 +6,9 @@ pipeline {
                 git(
                     url:"https://github.com/masoudn84/terraform-aws.git"
                 )
+                script{ sh "ls"
+                        sh "pwd"
+                }
             }
         }
         stage('apply terraform') {
